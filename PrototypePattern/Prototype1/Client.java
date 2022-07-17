@@ -1,4 +1,4 @@
-package PrototypePattern;
+package Prototype1;
 
 import java.util.List;
 
