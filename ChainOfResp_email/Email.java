@@ -1,4 +1,4 @@
-package Email;
+package ChainOfResp_email;
 
 public class Email {
     private int id;

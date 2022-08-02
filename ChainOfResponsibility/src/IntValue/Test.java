@@ -7,7 +7,7 @@ public class Test {
         Chain c3=new ThreeDimension();
 
         c2.setNext(c1);
-        // c1.setNext(c3);
+        c1.setNext(c3);
 
         c2.process(new Dimension(4));
         c2.process(new Dimension(3,5));

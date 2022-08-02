@@ -35,11 +35,13 @@ public class Company {
 
     public void notifyAllShops(){
         for(Shop shop : shops){
+            
             shop.priceUpdate();
+
         }
     }
 
-    public void  uploadProduct(String productName){
+    public void uploadProduct(String productName){
         this.productName=productName;
         notifyAllShops();
     }

@@ -1,10 +1,15 @@
-package Email;
+package ChainOfResp_email;
 
-public class CaptainEmailProcessor implements EmailProcessor,Chain {
-    private Chain nextChain;
+public class CaptainEmailProcessor implements EmailProcessor {
+    private EmailProcessor nextEmailProcessor;
+
+    public CaptainEmailProcessor(CoachEmailProcessor coachEmailProcessor) {
+       this.nextEmailProcessor =coachEmailProcessor;
+    }
+
     @Override
-    public void setNext(Chain nextChain) {
-        this.nextChain=nextChain;
+    public void setNext(EmailProcessor nextEmailProcessor) {
+        this.nextEmailProcessor = nextEmailProcessor;
         
     }
 
@@ -13,11 +18,11 @@ public class CaptainEmailProcessor implements EmailProcessor,Chain {
       if(email.getPriority()==Priority.Low){
           System.out.println(email.getMesssage());
       }
-      else if(this.nextChain==null){
+      else if(this.nextEmailProcessor ==null){
          this.message();
       }
       else{
-        this.nextChain.process(email);
+        this.nextEmailProcessor.process(email);
       }
     }
     @Override

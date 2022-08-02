@@ -1,10 +1,19 @@
-package Email;
+package ChainOfResp_email;
 
-public class CoachEmailProcessor implements EmailProcessor,Chain {
-    private Chain nextChain;
+public class CoachEmailProcessor implements EmailProcessor{
+    private EmailProcessor nextEmailProcessor;
+
+    public CoachEmailProcessor(BoardEmailProcessor boardEmailProcessor) {
+        this.nextEmailProcessor=boardEmailProcessor;
+    }
+
+    public CoachEmailProcessor() {
+
+    }
+
     @Override
-    public void setNext(Chain nextChain) {
-        this.nextChain=nextChain;
+    public void setNext(EmailProcessor nextEmailProcessor) {
+        this.nextEmailProcessor = nextEmailProcessor;
         
     }
 
@@ -13,11 +22,11 @@ public class CoachEmailProcessor implements EmailProcessor,Chain {
       if(email.getPriority()==Priority.Medium){
           System.out.println(email.getMesssage());
       }
-      else if(this.nextChain==null){
+      else if(this.nextEmailProcessor ==null){
           this.message();
       }
       else{
-          nextChain.process(email);
+          nextEmailProcessor.process(email);
       }
     }
 

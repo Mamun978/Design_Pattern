@@ -1,10 +1,10 @@
-package Email;
+package ChainOfResp_email;
 
-public class BoardEmailProcessor implements EmailProcessor,Chain{
-    private Chain nextChain;
+public class BoardEmailProcessor implements EmailProcessor {
+    private EmailProcessor nextEmailProcessor;
     @Override
-    public void setNext(Chain nextChain) {
-        this.nextChain=nextChain;
+    public void setNext(EmailProcessor nextEmailProcessor) {
+        this.nextEmailProcessor = nextEmailProcessor;
         
     }
 
