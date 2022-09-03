@@ -40,15 +40,17 @@ public class Shop implements CopyShop{
 	}
 	
 	public Shop getClone() {
+
 		Shop shop = new Shop(ID, number, floor);
+		
 		shop.setCategory(category);
+
 		shop.setColor(color);
 
-		
-		
-		for(Item item : itemList) {
+	    for(Item item : itemList) {
+			
+		    // shop.addItem((Item) item.getClone());
 
-			// shop.addItem((Item) item.getClone());
 			shop.addItem((Item)item.getClone());
 
 		}

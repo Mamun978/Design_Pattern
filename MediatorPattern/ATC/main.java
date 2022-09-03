@@ -20,7 +20,7 @@ public class main {
          f1.readyToLand();
          r1.land();
          f1.land();
-         ///f1.parked();
+        //  f1.parked();
          f2.land();
 
 

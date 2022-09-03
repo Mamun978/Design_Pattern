@@ -45,7 +45,9 @@ public class Folder implements CopyFolder {
   Folder folder=new Folder(folderName);
 
        for(File file: fileList){
+
          folder.addFile((File) file.copy());
+         
        }
 
        for(Folder folder2: folderList){
