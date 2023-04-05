@@ -1,0 +1,77 @@
+proxy::::
+The Proxy design pattern is a structural design pattern that allows for the creation of a surrogate or
+ placeholder for another object in order to control access to it.
+
+The proxy acts as an intermediary between the client and the real object, and it provides the same
+interface as the real object. The client interacts with the proxy object instead of the real object,
+ and the proxy object forwards the requests to the real object as necessary.
+
+
+
+-----------------------------------
+Factory
+
+A Factory Pattern or Factory Method Pattern says that just define an interface or abstract class
+ for creating an object but let the subclasses decide which class to instantiate. In other words,
+ subclasses are responsible to create the instance of the class.
+The Factory Pattern is a creational design pattern that provides an interface for creating objects in a
+ superclass, but allows subclasses to alter the type of objects that will be created.
+
+In this pattern, a factory class is responsible for creating objects of a certain type, based on input
+parameters or configuration. The factory class isolates the client code from the details of object creation, allowing for greater flexibility and maintainability of the code.
+
+The Factory Pattern can be useful when:
+
+The process of object creation is complex, or requires extensive configuration
+The specific types of objects that need to be created may change over time
+The client code needs to be decoupled from the actual object creation process
+Here's an example of how the Factory Pattern can be implemented in Java:
+
+// Product interface
+public interface Product {
+    void operation();
+}
+
+// Concrete products
+public class ConcreteProduct1 implements Product {
+    public void operation() {
+        System.out.println("ConcreteProduct1 operation");
+    }
+}
+
+public class ConcreteProduct2 implements Product {
+    public void operation() {
+        System.out.println("ConcreteProduct2 operation");
+    }
+}
+
+// Factory class
+public class ProductFactory {
+    public static Product createProduct(int type) {
+        switch (type) {
+            case 1:
+                return new ConcreteProduct1();
+            case 2:
+                return new ConcreteProduct2();
+            default:
+                throw new IllegalArgumentException("Invalid product type");
+        }
+    }
+}
+
+// Client code
+public class Client {
+    public static void main(String[] args) {
+        Product product1 = ProductFactory.createProduct(1);
+        product1.operation(); // "ConcreteProduct1 operation"
+
+        Product product2 = ProductFactory.createProduct(2);
+        product2.operation(); // "ConcreteProduct2 operation"
+    }
+}
+
+In this example, the ProductFactory class provides a static method createProduct that takes an integer
+argument specifying the type of product to create. The factory then returns a Product object of the appropriate type, as determined by the input argument.
+
+The client code uses the factory to create Product objects, without having to worry about the specific
+ implementation details of each product. This makes the code more modular and easier to maintain.
